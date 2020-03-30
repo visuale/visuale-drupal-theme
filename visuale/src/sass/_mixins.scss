@@ -1,0 +1,244 @@
+// Default grid
+@mixin default-grid($repeat:12) {
+    display:grid;
+    grid-template-columns: repeat($repeat,1fr);
+}
+
+// Set widths
+@mixin header-footer-content-placement() {
+    width:90vw;
+    margin:0 auto;
+    @include small-screen() {
+        width:96vw;
+        margin:0 auto;
+    }
+}
+
+// The left/right margin expansion to show the edges of slides beyond the exact width of page content
+@mixin slideshow-margins() {
+    margin-left:-$slide-outer-border-padding;
+    margin-right:-$slide-outer-border-padding;
+}
+
+// Set flex
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
+
+
+// Animation Transitions
+@mixin trans($property:opacity,$time:300ms,$function:ease-out,$delay:0s) {
+    -webkit-transition: $property $time $function $delay;
+    -moz-transition:    $property $time $function $delay;
+    -o-transition:      $property $time $function $delay;
+    transition:         $property $time $function $delay;
+}
+
+// Screen Width Breakpoints -- Default on parameter breaks is 'lessthan' (i.e. if screen width is less than max-width)
+
+// Extra Large Screens (default is less than width)
+@mixin x-large-screen($dir:'lessthan') {
+    @if $dir == 'lessthan' {
+        @media screen and (max-width:$x-large-width) {
+            @content;
+        }
+    } @else {
+        @media screen and (min-width:$x-large-width) {
+            @content;
+        }
+    }
+}
+
+// Large Screens
+@mixin large-screen($dir:'lessthan') {
+    @if $dir == 'lessthan' {
+        @media screen and (max-width:$large-width) {
+            @content;
+        }
+    } @else {
+        @media screen and (min-width:$large-width) {
+            @content;
+        }
+    }
+}
+
+
+// Standard (large tablet and or small laptops)
+@mixin standard-screen($dir:'lessthan') {
+    @if $dir == 'lessthan' {
+        @media screen and (max-width:$standard-width) {
+            @content;
+        }
+    } @else {
+        @media screen and (min-width:$standard-width) {
+            @content;
+        }
+    }
+}
+
+// Standard screen to tablet max
+@mixin  standard-medium-screen() {
+    @media screen and (max-width:$standard-width) and (min-width:$med-width) {
+        @content;
+    }
+}
+
+@mixin tablet-max() {
+    @media screen and (max-width:$standard-width) {
+        @content;
+    }
+}
+// iPad (768px) portrait.
+@mixin medium-screen($dir:'lessthan') {
+    @if $dir == 'lessthan' {
+        @media screen and (max-width:$med-width) {
+            @content;
+        }
+    } @else {
+        @media screen and (min-width:$med-width) {
+            @content;
+        }
+    }
+}
+
+// Small tablet (545px to 414px;
+@mixin medium-small-screen() {
+    @media screen and (max-width:$med-width) and (min-width:$med-small-width) {
+        @content;
+    }
+}
+
+// Small tablet (around 540px max)
+@mixin small-screen() {
+    @media screen and (max-width:$med-small-width) {
+        @content;
+    }
+}
+
+// Very small phone screens
+@mixin iphone-small-screen() {
+    @media screen and (max-width:$small-width-iphone-x) {
+        @content;
+    }
+}
+
+// Slideshow slides
+@mixin slide-global() {
+    a.slide {  
+        background:rgba($slide-default-background-color,.5);
+        @include flexbox();
+        align-items:center;
+        justify-content: center;
+        .tile {
+            padding:$slide-outer-border-padding;
+            position:relative;
+            @include flexbox();
+            align-items: center;
+            span.label-holder { 
+                position: absolute;
+                top:0;
+                left:0;
+                margin:0;
+                width:100%;
+                height:100%;
+
+                @include flexbox();
+                align-items: center;
+                justify-content: center;
+               
+                span.project-label {
+                    padding:1rem;
+                    text-align:center;
+                    color:$white;
+                    text-transform: uppercase;
+                    letter-spacing:1px;
+                    font-weight:600;
+                    font-size:.8rem;
+                    visibility: hidden;
+                    margin-top:1rem;
+                }
+                z-index:1000;
+            }
+            img {   
+                width:100%;
+                height:auto;
+            }
+        }
+        &:hover {
+            @include trans($property:background-color);
+            background-color:darken($bright-light-blue-3,25%);
+            .tile {
+                
+                span.label-holder {
+                    span.project-label {
+                        visibility: visible;
+                        @include trans($property:margin-top);
+                        margin-top:0;
+
+                    }
+                }
+                img {
+                    @include trans();
+                    opacity: .2;
+                }
+            }
+        }
+
+        // Note the .active class AND :active state – 
+        &.slide-active,
+        &:active {
+            
+            background-color:darken($bright-light-blue-3,25%);
+            .tile {
+                span.label-holder {
+                    label.project-label {
+                        visibility: visible;
+                        margin-top:0;
+                    }
+                }
+                img {
+                    opacity:.2;
+                }
+            }
+        }
+    }
+}
+
+// Mobile slideshow setups
+@mixin mobile-slides() {
+    @media (min-width:$med-width) {
+        display:none;
+    }
+    @media (max-width:$med-width) {
+        @include default-grid(2);
+        grid-gap:1rem;
+        margin-bottom:2rem;
+    }
+    @media (max-width:$small-width-iphone-x) {
+        display:block;
+    }
+    div.static-slide {
+        margin:0;
+        @media (max-width:$small-width-iphone-x) {
+            margin:.5rem auto;
+        }
+        span.tile,
+        div.tile {
+            position: relative;
+            padding:$slide-outer-border-padding;
+            display:block;
+            background: rgba($bright-light-blue,.5);
+            text-align: center;
+            img {
+                width:96%;
+                margin:0 auto;
+                height:auto;
+                background-color: white;
+            }
+        }
+    }
+}

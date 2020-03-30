@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+REMOVED THE DROPDOWN STRUCTURE SINCE THERE ARE ONLY 3 OR 4 LINKS IN MAIN NAV
+
+#}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/1.x/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0) }}
+{% if items %}
+{% for item in items %}
+{{ link(item.title, item.url) }}
+{% endfor %}
+{% endif %}
+
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <!--<ul{{ attributes.addClass('menu') }}> -->
+    {% else %}
+      {# <ul class="menu"> #}
+    {% endif %}
+    {% for item in items %}
+      {# {%
+        set classes = [
+          'menu-item',
+          item.is_expanded ? 'menu-item--expanded',
+          item.is_collapsed ? 'menu-item--collapsed',
+          item.in_active_trail ? 'menu-item--active-trail',
+        ]
+      %} #}
+      {# <li{{ item.attributes.addClass(classes) }}> #}
+        {{ link(item.title, item.url) }}
+        {# {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %} #}
+      {# </li> #}
+    {% endfor %}
+   <!-- </ul>-->
+  {% endif %}
+{% endmacro %}

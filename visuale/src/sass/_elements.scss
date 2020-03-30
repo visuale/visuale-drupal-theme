@@ -1,0 +1,75 @@
+// Default Elements
+a {
+    text-decoration: none;
+    color:darken($standard-teal,10%);
+    &:hover {
+        color:darken($standard-teal,30%);
+    }
+}
+
+p,h1,h2,h3,h4,h5,h6,ul,ol,li,form {
+    color:darken($teal-blue,10%);
+    font-weight:lighter;
+}
+
+// Soften stronger value to a semibold weight
+h1,h2,h3,h4,h5 {
+    margin:0; // Margin default reset
+    font-weight:600;
+    text-transform: uppercase;
+    letter-spacing:.05em;
+}
+
+strong {
+    font-weight:600;
+}
+
+
+h1 {
+    font-size:1.8rem;
+}
+
+h2 {
+    font-size:1.5rem;
+}
+
+h3 {
+    font-size:1.3rem;
+}
+
+h4 {
+    //text-transform: uppercase;
+}
+
+input[type="submit"],
+a.button {
+    display:inline-block;
+    text-transform: uppercase;
+    padding:.8rem 1.5rem;
+    //background:$light-orange-4;
+    background:$white;
+
+    font-size:.7rem;
+    font-weight:bold;
+    letter-spacing:.1rem;
+    color:darken($light-orange-4,10%);
+    &:hover {
+        background:$pale-lt-orange-3;
+    }
+    &.go-back {
+        &:before {
+            content:"\02190";
+        }
+    }
+    &.visit-website {
+        &:after {
+            display:inline-block;   
+            width:.8rem;
+            margin-bottom:-.4rem;
+            margin-left:.4rem;
+            content:url('../images/visit-website-white.svg');
+        }
+    }
+
+    
+}

@@ -1,0 +1,98 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+
+// Add your custom theme override functions here.
+
+/**
+ * Implements hook_preprocess_block()
+ */
+function visuale_preprocess_block(&$variables) {
+    
+}
+
+/**
+ * Implements template_preprocess_field().
+ */
+function visuale_preprocess_field(&$variables, $hook) {
+  
+    
+}
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * Adds additional classes
+ */
+function visuale_preprocess_html(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_node
+ *
+ * Add template suggestions and classes
+ */
+function visuale_preprocess_node(&$variables) {
+
+    // An exception might be thrown.
+    try {
+        $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+    }
+    catch (Exception $e) {
+        // If the database is not yet available, set the default value.
+        $variables['is_front'] = FALSE;
+    }  
+
+    // This hides "Read More" link on the front page .
+    if($variables['is_front'] == TRUE) {
+        $variables['view_mode'] = 'full';
+        $variables['page'] = TRUE;
+        $variables['content']['links'] = FALSE; // This is to remove the 'Read more' link  
+    }    
+}
+
+/**
+ * Implements template_preprocess_page
+ *
+ * Add convenience variables and template suggestions
+ */
+function visuale_preprocess_page(&$variables) {
+
+    // Send a current page variable for content region swapping
+    $variables['path'] = \Drupal::service('path.current')->getPath();
+}
+
+function visuale_preprocess_region(&$variables) {
+    /*
+    if(isset($variables['region']) && $variables['region'] == 'frontslides') {
+        
+        $variables['slides'] = [];
+        
+        $query = \Drupal::entityQuery('node')
+                    ->condition('type', 'development_projects');
+        $entity_ids = $query->execute();
+
+        $nodes = \Drupal::entityTypeManager()
+                ->getStorage('node')
+                ->loadMultiple($entity_ids);
+
+        foreach($nodes as $node) {
+            $variables['slides'][] = [
+                'id'=>$node->id(),
+                'title'=>$node->getTitle(),
+               'location'=>$node->field_client_location->value,
+            ];
+        }
+    }
+    */
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function visuale_preprocess_views_view(&$variables) {
+    
+}

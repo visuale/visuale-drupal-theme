@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{%
+    set classes = [
+      'block',
+      'block-' ~ configuration.provider|clean_class,
+      'block-' ~ plugin_id|clean_class,
+    ]
+  %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+  
+  {# Mobile Content #}
+  <div id="mobile_web_slides" class="mobile-slide-display mobile-web-slides">
+    <div class="static-slide">
+      <span class="tile">
+        <img src="{{ url('<front>') }}themes/custom/visuale/src/images/web_static/burritobeach-600x450.jpg" title="Burrito Beach" border="0" />
+      </span>
+    </div>
+
+
+    <div class="static-slide">
+      <span class="tile">
+        <img src="{{ url('<front>') }}themes/custom/visuale/src/images/web_static/corpevent_600x450.jpg" title="Corporate Event Interactive" border="0" />
+      </span>
+    </div>
+
+
+    <div class="static-slide">
+      <span class="tile">
+        <img src="{{ url('<front>') }}themes/custom/visuale/src/images/web_static/devnation2014_600x450.jpg" title="DevNation 2014" border="0" />
+      </span>
+    </div>
+
+    <div class="static-slide">
+      <span class="tile">
+        <img src="{{ url('<front>') }}themes/custom/visuale/src/images/web_static/prairie_school-600x450.jpg" title="Prairie School" border="0" />
+      </span>
+    </div>
+
+    <div class="static-slide">
+      <span class="tile">
+        <img src="{{ url('<front>') }}themes/custom/visuale/src/images/web_static/sportmans_600x450.jpg" title="Sportsmans Club" border="0" />
+      </span>
+    </div>
+
+    <div class="static-slide">
+      <span class="tile">
+        <img src="{{ url('<front>') }}themes/custom/visuale/src/images/web_static/sweetliesgolf_600x450.jpg" title="Apache DeltaSpike Logo" border="0" />
+      </span>
+    </div>
+  </div>

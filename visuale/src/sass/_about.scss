@@ -1,0 +1,38 @@
+.service-list {
+    padding-bottom:2rem;
+    @include default-grid(4);
+    grid-column-gap:1rem;
+    .service-block {
+        p {
+          font-weight:600;  
+        }
+        ul {
+            list-style:none;
+            padding:0 0 1rem 0;
+            margin:0;
+            li {
+                font-size:.9rem;
+                padding:.1rem 0;
+            }
+        }
+    }
+    @include standard-screen('lessthan') {
+        @include default-grid(3);
+        .service-block {
+            p {
+                font-size:.8rem;
+            }
+            ul {
+                li {
+                    font-size:.7rem;
+                }
+            }
+        }
+    }
+}
+
+.clientroster {
+    p {
+        
+    }
+}

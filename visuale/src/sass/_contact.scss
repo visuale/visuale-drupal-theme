@@ -1,0 +1,39 @@
+// Contact fields
+div.contact-social-media {
+    p {
+        a {
+            display:inline-block;
+            span {
+                display:inline-block;
+                height:1rem;
+                padding:0;
+                margin:0;
+                svg {
+                    margin-bottom:-.2rem;
+                    height:1rem;
+                }
+            }
+        }
+    }
+}
+
+// Contact form
+div.contact-form {
+    width:60%;
+    padding-bottom:3rem;
+    form {
+        
+        label {
+            display:block;
+            width:100%;
+            clear:both;
+            text-transform: uppercase;
+            letter-spacing:.1rem;
+            font-size:.8rem;
+        }
+
+        input,textarea {
+            border:none;
+        }
+    }
+} 

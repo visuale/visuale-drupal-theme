@@ -1,0 +1,268 @@
+// Slide grids and modal displays for individual slides
+.block {
+    &.block-visuale-front-slides-block {
+        height:auto;
+        display:grid;
+        grid-template-columns: 5vw 90vw 5vw;
+        padding:0;
+        position: relative;
+
+        a.direction-control {
+            text-align:center;
+            display: block;
+            @include flexbox();
+            align-self: center;
+            display:block;
+            text-align: center;
+            font-weight:bold;
+            font-size:2em;
+        }
+        &.hidden {
+            display:none;
+        }
+    }
+
+    &.block-visuale-web-slides-block {
+        width:90vw;
+        margin:0 auto;
+    }
+}
+
+.slideshow {
+    // Add margin extensions right/left
+    @include slideshow-margins();
+    &.frontslides {
+        position: relative;
+        padding:0;
+        width:90vw;
+        margin:0 -$slide-outer-border-padding;
+        @include tablet-max() {
+            margin:0;
+        }
+        overflow-x:hidden;
+        .tray {
+            padding:0;
+            margin:0;
+            position: absolute;
+            width:100%;
+            @include default-grid(5);
+            grid-gap:1rem;
+            @include standard-screen('lessthan') {
+                grid-gap:.7rem;
+            }
+            grid-template-rows: 1fr 1fr;
+            left:95vw; 
+            &.active {
+                left:0;
+            }
+            @include slide-global();  
+        }
+    }
+    grid-gap:1rem;
+    @include standard-screen('lessthan') {
+        grid-gap:.5rem;
+    }
+    @include default-grid(5);
+    &.webslides,
+    &.otherdesign,
+    &.logoslides {
+        @include slide-global();
+        &.hidden {
+            display:none;
+        }
+
+        @media (max-width:$med-width) {
+            display:none;
+        }
+    }
+
+    &.webslides {
+        margin-top:1em;
+        margin-bottom:2em;
+        @include tablet-max() {
+            @include default-grid(4);
+        }
+    }
+
+    &.otherdesign {
+        width:90vw;
+        @include default-grid(4);
+        @include tablet-max() {
+            @include default-grid(2);
+            grid-rows:1fr 1fr;
+        }
+        
+    }
+
+    &.logoslides {
+        padding:1rem 0 2rem 0;
+        // Additional page-specific adjustments
+        @include tablet-max() {
+            @include default-grid(4);
+        }
+        
+        a.slide {
+            padding:$slide-outer-border-padding;
+            .tile {
+                background:$white;
+            }
+            &:hover {
+                .tile {
+                    background:rgba($white,.1);
+                    img {
+                        opacity:.1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// The 'More Design' is in an alternate region, so a different DOM structure has to be queried.
+div#block-moredesignprojects {
+    padding:2rem 0 3rem 0;
+}
+
+// MODAL CONTAINER
+body {
+//.layout-container.main-content {
+    
+    //position: relative;
+    div.modal-container {
+        width:100%;
+        height:100%;
+        min-height:100%;
+        display:block;
+        position: absolute;
+        top:0;
+        bottom:0;
+        padding:0;
+        right:0;
+        left:0;
+        overflow: visible;
+        margin:0;
+        z-index:2000;
+        opacity:0;
+        @include trans($property:opacity,$time:400ms);
+        &.visible {
+            opacity:1;
+        }
+        &.remove {
+            opacity:0;
+        }
+        div.slide-modal-overlay {
+            position: absolute;
+            width:100%;
+            height:100%;
+            min-height:100%;
+            top:0;
+            bottom:0;
+            padding:0;
+            right:0;
+            left:0;
+            @include grad-white-light-orange-negative-45degrees();
+            opacity:.9;
+            // Make z-index 2000 to prevent further click actions
+            z-index:2500;
+            
+        }
+        // Container for contained elements
+        div.display-outer {
+            width:60%;
+            @include tablet-max() {
+                width:80%;
+            }
+            position: relative;
+            margin:2rem auto 0 auto;
+            z-index:3000;
+            div.display-main {
+                background:rgba($bright-light-blue-3,.6);
+                padding:2rem;
+                div.top-row {
+                    @include default-grid();
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-bottom: 1rem;
+                   
+                    // Title area and close button
+                    h3 {
+                        grid-column: 1 / span 10;
+                        letter-spacing:1px;
+                        text-transform: uppercase;
+                    }
+
+                    a.button.close-button {
+                        grid-column: 11 / span 2;
+                        padding:0;
+                        margin:0;
+                        background:none;
+                        text-align:right;
+                        color:$teal-blue;
+                        &:before {
+                            content:"\2715";
+                            margin-right:.5rem;
+                        }
+                        &:hover {
+                            color:$white;
+                        }
+                        &:active {
+                            color:$pale-lt-orange-3;
+                        }
+                    }
+                }
+                div.main-row {
+                    // Lower area
+                    @include default-grid();
+                    grid-column-gap: .8rem;
+                    .info-div {
+                        grid-column:1 / span 4;
+                        .info-desc {
+                            p {
+                                margin:0;
+                                padding:0 0 1rem 0;
+                            }
+                        }
+                        
+                    }
+                    .img-display {
+                        grid-column: 5 / span 8;  
+                        position: relative;
+                        img {
+                            box-shadow:0 .1rem .5rem $teal-blue;
+                            width:100%;
+                            height:auto;
+                        }
+                    }
+
+                    // Adjust widths of each side based on type
+                    &.design,
+                    &.logo {
+                        .info-div {
+                            display:none;
+                        }
+                        .img-display {
+                            grid-column: 1 / span 12;
+                            padding:0;
+                            img {
+                                background:$white;
+                            }
+                            
+                        }
+                    }
+                    &.logo {
+                        padding:2rem;
+                        background:$white;
+                        .img-display {
+                            
+                            img {
+                                box-shadow: none;
+                            }
+                        }
+                    }
+                }   
+            }
+        }
+    }
+}
+

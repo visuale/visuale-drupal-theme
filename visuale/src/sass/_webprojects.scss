@@ -1,0 +1,4 @@
+.mobile-web-slides {
+    @include header-footer-content-placement();
+    @include mobile-slides();
+}

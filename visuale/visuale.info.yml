@@ -1,0 +1,22 @@
+name: Visuale
+description: "Visuale theme"
+core: 8.x
+type: theme
+base theme: classy
+
+libraries:
+  - visuale/global-styling
+  - visuale/global-scripts
+
+screenshot: images/screenshot.jpg
+
+regions:
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'
+  frontslides: 'Front Slides'
+  frontlinkblocks: 'Front Link Blocks'
+  webslides: 'Web Slides Section'
+  clientroster: 'Client Roster'
+  logoslides: 'Logo Slide Area'
+  otherdesign: 'Other Design Area'

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * core/themes/classy/templates/block/block.html.twig
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{%
+    set classes = [
+      'block',
+      'block-' ~ configuration.provider|clean_class,
+      'block-' ~ plugin_id|clean_class,
+    ]
+  %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>

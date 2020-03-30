@@ -1,0 +1,140 @@
+header {
+    @include grad-light-teal-light-blue-light-orange();
+    
+    font-weight:light;   
+    max-height:100px;
+    padding:.5rem 0;
+    // iPad breakpoint
+    @include medium-screen() {
+        @include light-blue-to-pale-light-blue-45degrees();
+        max-height:50px;
+        padding:.3rem 0;
+    }
+
+    div.layout-container {
+        @include header-footer-content-placement();
+        div.region {
+            &.region-header {
+                @include default-grid();
+
+                // Change grid structure for small width
+                @include small-screen() {
+                    grid-template-columns:1fr;
+                    grid-template-rows: 50% 50%;
+                }
+
+                div.block-system-branding-block {
+                    grid-column: 1 / span 2;
+                    display:flex;
+                    flex-flow:row nowrap;
+                    align-items: center;
+                    @include small-screen() {
+                        grid-column:1 / span 1;
+                        grid-row: 1 / span 1;
+                        text-align:center;
+                    }
+
+                    a.site-logo   {
+                        display:block;
+                        width:100%;
+                        height:auto;
+                        max-width:160px;
+                            svg {
+                                height:100%;
+                                width:auto;
+                                path {
+                                    fill: $teal-blue;
+                                }
+                            }
+                        // iPad breakpoint
+                        @include medium-screen() {    
+                            max-width:120px;
+                        }
+                        @include small-screen() {    
+                            max-width:140px;
+                            margin:0 auto .5rem auto;
+                        }
+                    }
+                }
+
+                nav {
+                    &.menu--main {
+                        grid-column:4 / span 6;
+                        display:grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+
+                        // iPad breakpoint
+                        @include medium-screen() {   
+                            grid-column:5 / span 5; 
+                            a {
+                                font-size:13px;
+                            }
+                        }
+                        // Small screens
+                        @include small-screen() {
+                            grid-column: 1 / span 1;
+                            grid-row: 2 / span 1;
+                        }
+
+                        a {  
+                            justify-self:center;
+                            align-self:center;
+                            text-align: center;
+                            text-transform: uppercase;
+                            letter-spacing:1px;
+                            font-weight:600;
+                            font-size:.9rem;
+                            color:$teal-blue;
+                        }
+                        
+                    }
+                }
+
+                // Social media links controlled in socialmedialinks.scss
+                div.social-media-links {
+                    grid-column:12 /span 1;
+                    display:flex;
+                    flex-flow:row nowrap;
+                    justify-content: flex-end;
+                    align-items: center;
+                    @include small-screen() {
+                        display:none;
+                    }
+
+                    a {             
+                        display:block;
+                        width:1.5rem;
+                        height:1.5rem;
+                        text-align: center;
+                        svg {
+                            width:auto;
+                            height:100%;
+                           
+                        }
+                        &:last-child {
+                            width:2.1rem;
+                            margin-left:.5rem;
+                            text-align: right;
+                        }
+                        
+                    }
+                    // iPad breakpoint
+                    @include medium-screen() {    
+                        a {
+                            width:1rem;
+                            height:1rem;
+                            &:last-child {
+                                width: 1.6rem;
+                            }
+                            svg {
+                                path {
+                                    fill:$standard-teal;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

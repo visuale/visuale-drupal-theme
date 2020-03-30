@@ -1,0 +1,75 @@
+// Design main page
+.block {
+    &.block-visuale-logo-slides-block,
+    &.block.block-views.block-views-blockdesign-featured-items-block-1,
+    &#block-moredesignprojects {
+        @include header-footer-content-placement();
+        margin-left:auto;
+         margin-right:auto;
+         @include medium-screen('lessthan') {
+             width:90%;
+         }
+        .slideshow.otherdesign {
+            @include medium-screen('lessthan') {
+                margin:0;
+                display:block;
+                a {
+                    margin:1rem 0;
+                }
+            } 
+        }
+         
+    }
+
+    &.block-visuale-logo-slides-block {
+        padding-top:2rem;
+        .mobile-logo-slides {
+            display:none;
+            @include mobile-slides(); 
+        }
+    }
+
+    // Other Design Slides by Way of A View (currently not in use)
+    &.block.block-views.block-views-blockdesign-featured-items-block-1 {
+        padding:1rem 0 2rem 0;
+        div {
+            div.view-design-featured-items {
+                div.view-content {
+                    @include default-grid(4);
+                    grid-column-gap: 1rem;
+                    margin:0 auto;
+                    div.design-featured-item {
+                        div.views-field {
+                            // Thumbnail
+                            &.views-field-field-project-thumbnail {
+                                .field-content {
+                                    @include slide-global();
+                                }
+                            }
+                        }
+                        span {  
+                            a {
+                                text-align: center;
+                                font-size:.7rem;
+                                margin-top:.3rem;
+                                padding:.5rem 0;
+                                background:rgba($white,.5);
+                                display:block;
+                                width:100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.region-otherdesign {
+    .block {
+        p {
+            padding:1rem 0;
+        }
+    }
+}
+
+

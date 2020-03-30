@@ -1,0 +1,223 @@
+footer.site-footer {
+    
+    width:100%;
+    color:$standard-teal;
+    padding:1rem 0 1rem 0;
+    @include light-blue-to-pale-light-blue-45degrees();
+
+    div.layout-container {
+        @include header-footer-content-placement();
+        div.region.region-footer {
+            @include default-grid();
+            // See below for breakpoint changes for template rows.
+            
+            div.footer-site-brand {
+                grid-column:1 / span 2;
+                a {
+                    display:block;
+                    width:60%;
+                    svg {
+                        path {
+                            fill:$standard-teal;
+                        }
+                    }
+                }
+            }
+
+            div.location-and-timezone,nav {
+                font-size:.8em;
+            }
+
+            div.location-and-timezone {
+                grid-column:3 / span 2;
+                p {
+                    margin:0;
+                    color: $teal-blue;
+                }
+            }
+    
+            nav {
+                grid-column: 6 / span 6;
+                a,span {
+                    display:inline-block;
+                }
+                span {
+                    font-weight:600;
+                }
+                a {
+                    margin:0 .8rem;
+                }
+            }
+    
+            div.social-media-links {
+                grid-column:12 / span 1;
+                border:none;
+                text-align: right;
+                a {
+                    display:inline-block;
+                    width:1rem;
+                    height:1.2rem;
+                    svg {
+                        width:auto;
+                        height:100%;
+                    }
+                    &:last-child {
+                        width:1.6rem;
+                        margin-left:.5rem;
+                    }
+                }
+            }
+
+            // Breakpoint changes for component placement
+            @include standard-medium-screen() {
+                grid-template-rows:1fr 1fr;
+
+                div.footer-site-brand {
+                    grid-row:1 / span 1;
+                    a {
+                        width:100%;
+                    }
+                }
+                div.location-and-timezone {
+                    grid-row:2 / span 1;
+                    grid-column: 1 / span 3;
+                }
+                nav {
+                    grid-row:2 / span 1;
+                    grid-column: 4 / span 8;
+                }
+                div.social-media-links {
+                    grid-row:2 / span 1;
+                }
+            }
+
+            // Small tablet screen
+            @include medium-screen() {
+
+                grid-template-rows:1fr 1fr 1fr;
+
+                div.footer-site-brand {
+                    grid-row:1 / span 1;
+                    grid-column:1 / span 12;
+                    padding-bottom:1em;
+                    a {
+                        width:100%;
+                        max-width:150px;
+                    }
+                }
+                div.location-and-timezone {
+                    grid-row:3 / span 1;
+                    grid-column: 1 / span 12;
+                    padding-top:0;
+                    p {
+                        display:inline-block;
+                        &:last-child {
+                            margin-left:.5rem;
+                        }
+                    }
+                }
+                nav {
+                    grid-row:2 / span 1;
+                    grid-column: 1 / span 10;
+                }
+                div.social-media-links {
+                    grid-row:2 / span 1;
+                    grid-column: 11 / span 2;
+                    a {
+                        svg {
+                            path {
+                                fill:$teal-blue;
+                            }
+                            
+                        }
+                    }
+                }
+
+            
+            }
+
+            @include small-screen() {
+                grid-template-rows:1fr 1fr 1fr;
+
+                div.footer-site-brand {
+                    grid-row:1 / span 1;
+                    grid-column:1 / span 12;
+                    padding-bottom:1em;
+                    a {
+                        width:100%;
+                        max-width:150px;
+                        margin:0 auto;
+
+                    }
+                }
+                div.location-and-timezone {
+                    grid-row:3 / span 1;
+                    grid-column: 1 / span 10;
+                    padding-top:0;
+                    p {
+                        display:inline-block;
+                        &:last-child {
+                            margin-left:.5rem;
+                        }
+                    }
+                }
+                nav.footer-navigation {
+                    grid-row:2 / span 1;
+                    grid-column: 1 / span 12;
+                    text-align: center;
+                    margin:0 .5rem;
+                    border:1px solid red;
+                }
+                div.social-media-links {
+                    grid-row:3 / span 1;
+                    grid-column: 11 / span 2;
+                    a {
+                        width:auto;
+                        height:1rem;
+                        svg {
+                            path {
+                                fill:$teal-blue;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
+            @include iphone-small-screen() {
+                grid-template-rows: 4fr;
+                nav {
+                    a {
+                        margin:0 .2rem;
+                    }
+                }
+
+                div.location-and-timezone {
+                    grid-column:1 / span 12;
+                    padding-top:1rem;
+                    display:inline-block;
+                    text-align: center;
+                }
+
+                div.social-media-links {
+                    grid-row: 4 / span 1;
+                    grid-column: 1 / span 12;
+                    text-align:center;
+                    padding-top:1rem;
+                }
+            }
+        }
+
+        &.site-disclaimer {
+            padding:2em 0 0 0;
+            p {
+                font-size:.7rem;
+                color:lighten($standard-teal,10%);
+            }
+
+            @include medium-screen {
+                padding-top:0;
+            }
+        }
+    }
+}

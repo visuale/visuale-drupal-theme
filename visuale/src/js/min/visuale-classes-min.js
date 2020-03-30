@@ -1,0 +1,1 @@
+class Structure{makeDiv(t="",e=""){var s=document.createElement("div");return s.setAttribute("class",t),s.setAttribute("id",e),s}}

@@ -1,0 +1,70 @@
+// Single project page layout
+article.project-article {
+    h2 {
+        font-weight:600;
+        //text-transform: uppercase;
+        letter-spacing:.1rem;
+        word-spacing: .3rem;
+    }
+    div.project-display {
+        padding:1rem 0 2rem 0;
+        @include default-grid();
+        grid-gap:1rem;
+
+        .project-info {
+            grid-column: 1/span 5;
+            p:first-child {
+                padding-top:0;
+                margin-top:0;
+            }
+            h3 {
+                //text-transform: uppercase;
+                letter-spacing: .1rem;
+                font-weight:600;
+            }
+            
+            .project-components {
+                padding:.5rem 0 1rem 0;
+                span {
+                    display: initial;
+                    text-align:center;
+                    font-size:.7rem;
+                    color:$standard-teal;
+                    &:after {
+                        content: ',';
+                    }
+                    &:last-child {
+                        &:after {
+                            content:'';
+                        }
+                    }
+                }
+            }
+
+            .link-line {
+                padding-top:1rem;
+                a {
+                    &.button {
+                        text-align: center;
+                        width:80%;
+                        margin:0;
+                    }
+                    &:first-child {
+                        margin-bottom:2rem;
+                    }
+                }
+            }
+        }
+        .project-image {
+            grid-column: 6/span 7;
+            .image-div {
+                background: rgba($slide-default-background-color,.5);
+                padding:1rem;
+                img {
+                    width:100%;
+                    height:auto;
+                }
+            }
+        }
+    }
+}

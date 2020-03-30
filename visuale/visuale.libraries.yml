@@ -1,0 +1,29 @@
+# visuale.libraries.yml
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      src/css/visuale.css: {}
+global-scripts:
+  version: 1.x
+  js:
+    https://unpkg.com/babel-standalone@6.15.0/babel.min.js: { external: true, minified: true }
+    src/js/min/visuale-min.js:                  {}
+    src/js/min/visuale-functions-min.js:        {}
+    src/js/min/visuale-components-min.js:       {}
+    src/js/min/visuale-front-slides-min.js:     {}
+    src/js/min/visuale-slideshows-web-min.js:   {}
+    src/js/min/visuale-slideshows-other-min.js: {}
+    src/js/min/visuale-slideshows-logos-min.js: {}
+react:
+  version: 1.x
+  header: true
+  js:
+    https://unpkg.com/react@16/umd/react.production.min.js: { external: true, minified: true }
+    https://unpkg.com/react-dom@16/umd/react-dom.production.min.js: { external: true, minified: true }
+    https://unpkg.com/babel-standalone@6.15.0/babel.min.js: { external: true, minified: true }
+react-app:
+  version: 1.0.0
+  footer: true
+  js:
+    src/js/index.js: { preprocess: 0, attributes: { type: text/babel } }

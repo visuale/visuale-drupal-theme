@@ -1,0 +1,23 @@
+.block-visuale-client-roster {
+    padding:2rem 0 3rem 0;
+    @include  grad-medium-light-orange-light-teal();
+    h2,
+    .clientroster {
+        @include header-footer-content-placement();
+    }
+    h2 {
+        margin-bottom:1.5rem;
+    }
+
+    .clientroster {
+        @include default-grid(3);
+        grid-column-gap: 1rem;
+        font-size:.9rem;
+            p {
+                padding:0;
+                margin:.2rem 0;
+            }
+    }
+
+    
+}
