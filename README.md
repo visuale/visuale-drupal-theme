@@ -1,10 +1,14 @@
 # Visuale Drupal Site Theme Test
 This was a site theme I had been working on a while back when I was considering switching the company website from Wordpress to Drupal. I've since gone back to Wordpress but I thought I'd add the theme as a small example of incorporating display modules.
 
+<img src="readme-images/home.png" width="400" />
+
 The actual theme contents are located in the directory **/visuale**
 
 ## Display Modules
 The field types are meant to display as a portfolio of past projects. For the most part, the actual field contents are exposed to the the theme by way of custom modules. One such example is here: <https://github.com/visuale/visuale-slides-module>
+
+<img src="readme-images/design.png" width="400" />
 
 Since the modules were designed to work specifically with this theme, all of the JS and CSS (and much of the .twig contents) are stored in the theme itself, but this could just as easily be placed within the specific modules.
 
